@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { AuthRequest } from 'src/app/models/interfaces/auth/AuthRequest';
 import { SingnupUserRequest } from 'src/app/models/interfaces/user/SignupUserRequest';
 
+import { Router } from '@angular/router';
 import { UserService } from './../../services/user/user.service';
 
 @Component({
@@ -31,7 +32,8 @@ export class HomeComponent {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private cookieServise: CookieService,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private router: Router) { }
 
   onSubmitLoginForm(): void {
     if (this.loginForm.value && this.loginForm.valid) {
@@ -41,7 +43,7 @@ export class HomeComponent {
             if (response) {
               this.cookieServise.set('USER_INFO', response?.token);
               this.loginForm.reset();
-              this.successToastMessage(`Bem vindo de volta ${response.name}`);
+              this.router.navigate(['/dashboard']);
             }
           },
           error: () => this.errorToastMessage(`Erro ao fazer login`)
