@@ -14,14 +14,14 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./models/dashboard/dashboard.module').then(
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(
       (m) => m.DashboardModule
     ),
     canActivate: [AuthGuard]
   },
   {
     path: 'products',
-    loadChildren: () => import('./models/products/products.module').then(
+    loadChildren: () => import('./modules/products/products.module').then(
       (m) => m.ProductsModule
     ),
     canActivate: [AuthGuard]
