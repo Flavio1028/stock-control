@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Subject, takeUntil } from 'rxjs';
 import { CategoryEvent } from 'src/app/models/enums/categories/CategoryEvents';
 import { EditCategoryAction } from 'src/app/models/interfaces/categories/event/EditCategoryAction';
@@ -28,7 +28,8 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
     public ref: DynamicDialogConfig,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
-    private categoriesServices: CategoriesService
+    private categoriesServices: CategoriesService,
+    private dialogRef: DynamicDialogRef
   ) { }
 
   ngOnInit(): void {
@@ -101,6 +102,7 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
               detail: 'Categoria editada com sucesso!',
               life: 2500
             });
+            this.dialogRef.close();
           },
           error: (err) => {
             console.log(err);

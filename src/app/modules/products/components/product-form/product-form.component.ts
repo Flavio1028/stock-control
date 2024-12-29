@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductEvent } from 'src/app/models/enums/products/ProductEvents';
 import { GetCategoriesResponse } from 'src/app/models/interfaces/categories/responses/GetCategoriesResponse';
@@ -63,7 +63,8 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private messageService: MessageService,
     private router: Router,
-    public ref: DynamicDialogConfig
+    public ref: DynamicDialogConfig,
+    private dialogRef: DynamicDialogRef
   ) { }
 
   ngOnInit(): void {
@@ -163,6 +164,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
               life: 2500,
             });
             this.editProductForm.reset();
+            this.dialogRef.close();
           },
           error: (err) => {
             console.log(err);
@@ -189,15 +191,15 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         .pipe(takeUntil(this.destroy$))
         .subscribe({
           next: () => {
-            this.saleProductForm.reset();
-            this.getProductDatas();
             this.messageService.add({
               severity: 'success',
               summary: 'Sucesso',
               detail: 'Venda efetuada com sucesso!',
               life: 2500,
             });
+            this.saleProductForm.reset();
             this.router.navigate(['/dashboard']);
+            this.dialogRef.close();
           },
           error: (err) => {
             console.log(err);
