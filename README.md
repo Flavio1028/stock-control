@@ -1,27 +1,56 @@
-# StockControl
+# Stock Control
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+O Stock Control é um aplicativo web desenvolvido com Angular 15.2.11. Ele simula de forma simples a operação de controle de estoque e venda de produtos, oferecendo funcionalidades essenciais para o gerenciamento de inventário em ambientes comerciais. A aplicação permite aos usuários cadastrar, editar, visualizar e realizar vendas de produtos, controlando o estoque de maneira eficiente e intuitiva.
 
-## Development server
+Principais funcionalidades:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Cadastro e gerenciamento de produtos
+- Interface amigável e responsiva
 
-## Code scaffolding
+## Tecnologias Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 15.2.11
+- primeng 15.4.1
+- SCSS
+- stock-api (NodeJs)
 
-## Build
+## Instalação
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Clone o repositório**
 
-## Running unit tests
+```bash
+   git clone https://github.com/Flavio1028/stock-control
+   cd stock-control
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Instale as dependências
 
-## Running end-to-end tests
+```bash
+   npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. Iniciar a API stock-api (NodeJs), ela pode ser encontrada neste repositorio
 
-## Further help
+```bash
+   git clone https://github.com/marcosJuniorPassarella/stock-api
+   cd stock-api
+   npm install
+   yarn dev
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4. Inicie o servidor de desenvolvimento
+
+```bash
+  npm start
+```
+5. Acesse o aplicativo
+
+Abra o seu navegador e vá para http://localhost:4200.
+
+### Acesso ao Sistema
+
+Com o aplicativo em funcionamento, basta realizar o seu cadastro para começar a usar o sistema.
+
+## Licença
+
+Este projeto está licenciado sob a MIT License. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
